@@ -103,7 +103,7 @@
     },
 
 
-
+    // FOR QUEENS ONLY
     // Major Diagonals - go from top-left to bottom-right
     // --------------------------------------------------------------
     //

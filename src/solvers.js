@@ -45,3 +45,23 @@ window.countNQueensSolutions = function(n) {
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };
+
+
+// high-level: we need to build a tree with all possible legal states of piece position
+
+// get a new board
+
+// 1. add to the children array of the root node another node with a piece in the first position on the board
+// 2. add to the children array of the root node another node with a piece in the second position on the board
+// 3. repeat this pattern until all possible first move states of the board have been added to the root node children array
+
+// for each child node at the 1st layer in the tree
+  // 1. add to the children array of the first node another node with a rook in the next open position on the board
+  // 2. add to the children array of the first node another node with a rook in the next open position on the board
+  // 3. repeat this pattern until all possible second move states of the board have been added to the 2nd layer of the tree
+  // after all nodes with possible open moves have been added to the children array
+    // iterate over this nodes children array
+      // check if the current node has a legal board state based on piece attacking rules (will need to call the helper function methods here)
+        // if false, delete the node
+
+// repeat
