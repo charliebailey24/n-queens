@@ -79,11 +79,34 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      var board = this;
+      var counter = 0;
+      var row = board.get(rowIndex);
+
+      for (var i = 0; i < row.length; i++) {
+        if (row[i] === 1) {
+          counter++;
+        }
+      }
+      if (counter > 1) {
+        return true;
+      } else {
+        return false;
+      }
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
+      var board = this;
+      var n = board.attributes.n;
+
+      for (var i = 0; i < n; i ++) {
+
+        if (board.hasRowConflictAt(i)) {
+          return true;
+        }
+      }
+
       return false; // fixme
     },
 
@@ -94,12 +117,33 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var board = this;
+      var matrix = board.rows();
+
+      var counter = 0;
+      for (var i = 0; i < matrix.length; i ++) {
+        if (matrix[i][colIndex] === 1) {
+          counter++;
+          if (counter > 1) {
+            return true;
+          }
+        }
+      }
+      return false;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var board = this;
+      var n = board.attributes.n;
+
+      for (var i = 0; i < n; i++) {
+        if (board.hasColConflictAt(i)) {
+          return true;
+        }
+      }
+
+      return false;
     },
 
 
@@ -109,7 +153,19 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      // metrix row +1 -1 , metrix row=1. column +1
+      //get metrix =borad.row();
+
+      var board = this;
+      var matrix;
+
+
+      // whereever the queen is placed
+      // we need to check the column one down and one over for
+
+      // if there the cell value is 1
+      // iterate from 1 to n
+        // if the current row number and current column number
     },
 
     // test if any major diagonals on this board contain conflicts
