@@ -65,3 +65,13 @@ window.countNQueensSolutions = function(n) {
         // if false, delete the node
 
 // repeat
+
+
+
+// SECOND PASS
+// initial state is root of the tree (empty n x n matrix)
+// need to check if this state is the goal state
+// if it is not the goal state
+  // expand the current state by adding nodes to the children array of...
+
+

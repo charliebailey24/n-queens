@@ -152,25 +152,67 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
-    hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+    hasMajorDiagonalConflictAt: function(colIndex) {
+      // original param name: majorDiagonalColumnIndexAtFirstRow
+      //input? --- number --- 0-(n-1)
+      //var MajorDiagonalColumnIndexAtFirstRow==mejorcolnum
       // metrix row +1 -1 , metrix row=1. column +1
       //get metrix =borad.row();
 
+
+      // input: the i that we are iterating over in hasAnyMajorDiagonalConflicts
+
+
+
       var board = this;
-      var matrix;
+      var matrix = board.rows();
+      // var rowIndex = 0;
+      var n = board.attributes.n;
+      var counter = 0;
+      // check
 
+      // _getFirstRowColumnIndexForMajorDiagonalOn
+      // colIndex in between (-(n-1))--->(n-1)
+      for (var i = 0; i < n; i ++) { //i == 1, x=1
+        // check if i is in bounds
+        if ( board._isInBounds(i, (colIndex + i))) {
+          if ( matrix[0 + i][colIndex + i] === 1) {
+            counter ++;
+            if (counter > 1) {
+              return true;
+            }
+          }
+        }
+      }
 
-      // whereever the queen is placed
-      // we need to check the column one down and one over for
+      return false;
 
-      // if there the cell value is 1
-      // iterate from 1 to n
-        // if the current row number and current column number
+      // console.log('majorDiagonalColumnIndexAtFirstRow: ', majorDiagonalColumnIndexAtFirstRow);
+
+      // iterate over 1->n ,
+      //if metrix[0+i][mejorcolum+i] === 1 or not
+
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      // iterate over (-(n-2)) to (n-2)---> i will be the input of the hasMajorDiagonalConflictAt
+
+      // want to iterate over all of the major diagonals
+      // calling hasMajorDiagonalConflictAt in this function
+
+      var board = this;
+      var n = board.attributes.n;
+      var i = (-(n - 2));
+
+      while (i <= (n - 2) ) {
+        if (board.hasMajorDiagonalConflictAt(i)) {
+          return true;
+        }
+        i++;
+      }
+
+      return false;
     },
 
 
@@ -179,13 +221,46 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
-    hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+    hasMinorDiagonalConflictAt: function(colIndex) {
+
+      var board = this;
+      var matrix = board.rows();
+      var n = board.attributes.n;
+      var counter = 0;
+      // colIndex = 0;
+
+      for (var i = n; i > -1; i --) {
+        // i = 3 []
+        // i = 2 []
+        // i = 1 []
+        // i = 0 []
+        if ( board._isInBounds( i, (colIndex - i))) { //checking the postion that we will look at is on the board, row index always starting at 0,
+          if ( matrix[0 + i][colIndex - i] === 1) {
+            counter ++;
+            if (counter > 1) {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      var board = this;
+      var n = board.attributes.n;
+      var i = 1;
+
+      while (i <= (n + 2) ) {
+        if (board.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+        i++;
+      }
+
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
