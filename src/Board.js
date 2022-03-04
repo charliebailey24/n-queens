@@ -227,9 +227,10 @@
       var matrix = board.rows();
       var n = board.attributes.n;
       var counter = 0;
-      // colIndex = 0;
+      // colIndex = 1;
+      // n = 3
 
-      for (var i = n; i > -1; i --) {
+      for (var i = 0; i < n; i ++) {
         // i = 3 []
         // i = 2 []
         // i = 1 []
@@ -252,6 +253,7 @@
       var board = this;
       var n = board.attributes.n;
       var i = 1;
+      // n = 3
 
       while (i <= (n + 2) ) {
         if (board.hasMinorDiagonalConflictAt(i)) {

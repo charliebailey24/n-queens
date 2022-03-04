@@ -16,7 +16,27 @@
 
 
 window.findNRooksSolution = function(n) {
+
   var solution = undefined; //fixme
+  // iterate over the matrix and place the n rooks
+  // after placing the first rook, start to place the second rook, if the position placed return false on both "hasAnyColConflicts" and "hasAnyRowConflicts"
+  //then it is a valid candidate for placement//then move on to the next stop, if there are n rooks placed, return the result and quit
+
+  // get an empty board
+  // build 9 nodes
+  // use 1 --> n
+  // convert the matrix into a
+
+  var board = new Board({'n': n});
+  board.togglePiece(0, 0);
+  console.log(board);
+  // iterate over the matrix
+  // [[],[],[],[]]
+  var matrix = board.rows();
+  // first iterate over the matrix
+
+    // then iterate over each ith element
+
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
@@ -65,8 +85,6 @@ window.countNQueensSolutions = function(n) {
         // if false, delete the node
 
 // repeat
-
-
 
 // SECOND PASS
 // initial state is root of the tree (empty n x n matrix)
